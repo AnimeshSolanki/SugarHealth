@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+   <title>Diabetes Prediction</title>
+</head>
+<body>
+   <h1> Diabetes Prediction</h1>
+   <form action="/predict" method="post">
+       <label for="Pregnancies">Pregnancies</label>
+       <input type="text" name="Pregnancies" required>
+
+       <label for="Glucose">Glucose</label>
+       <input type="text" name="Glucose" required>
+
+       <label for="BloodPressure">Blood Pressure</label>
+       <input type="text" name="BloodPressure" required>
+
+       <label for="SkinThickness">Skin Thickness</label>
+       <input type="text" name="SkinThickness" required>
+
+       <label for="Insulin">Insulin</label>
+       <input type="text" name="Insulin" required>
+
+       <label for="BMI">BMI</label>
+       <input type="text" name="BMI" required>
+
+       <label for="DiabetesPedigreeFunction">Diabetes Pedigree Function</label>
+       <input type="text" name="DiabetesPedigreeFunction" required>
+
+       <label for="Age">Age</label>
+       <input type="text" name="Age" required>
+
+       <button type="Submit">Predict</button>
+   </form>
+
+   {% if prediction is defined %}
+        <p class="{% if prediction == 'Positive' %}positive{% else %}negative{% endif %}">Prediction: {{ prediction }}</p>
+   {% endif %}
+</body>
+</html>
